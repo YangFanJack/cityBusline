@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="link.jack1024.dao.BusLineDao">
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailBusLine1" type="BusLine">
+        <result property="id" column="bid"/>
+        <result property="lineNum" column="line_num"/>
+        <result property="linePrice" column="line_price"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+        <collection property="points" ofType="Point">
+            <result property="id" column="pid"/>
+            <result property="x" column="px"/>
+            <result property="y" column="py"/>
+        </collection>
+    </resultMap>
+    <select id="selectAllLinePoint" resultMap="detailBusLine1">
+        select bus_line.id bid,line_num,line_price,begin_time,end_time,
+               `point`.id pid,`point`.x px,`point`.y py
+        from bus_line,line_point,`point`
+        where bus_line.id=line_point.line_id and `point`.id=line_point.point_id
+        order by line_point.id
+    </select>
+
+    <resultMap id="detailBusLine2" type="BusLine">
+        <result property="id" column="bid"/>
+        <result property="lineNum" column="line_num"/>
+        <result property="linePrice" column="line_price"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+        <collection property="points" ofType="Point">
+            <result property="id" column="pid"/>
+            <result property="x" column="px"/>
+            <result property="y" column="py"/>
+        </collection>
+    </resultMap>
+    <select id="selectById" parameterType="int" resultMap="detailBusLine2">
+        select bus_line.id bid,line_num,line_price,begin_time,end_time,
+               `point`.id pid,`point`.x px,`point`.y py
+        from bus_line,line_point,`point`
+        where bus_line.id=line_point.line_id and `point`.id=line_point.point_id and bus_line.id=#{id}
+        order by line_point.id
+    </select>
+
+
+
+</mapper>

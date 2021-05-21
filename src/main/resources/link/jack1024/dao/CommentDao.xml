@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="link.jack1024.dao.CommentDao">
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailComment1" type="Comment">
+        <result property="id" column="cid"/>
+        <result property="content" column="ccontent"/>
+        <result property="time" column="ctime"/>
+        <association property="post" javaType="Post">
+            <result property="id" column="pid"/>
+            <result property="title" column="title"/>
+        </association>
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="email" column="email"/>
+            <result property="nickName" column="nick_name"/>
+        </association>
+    </resultMap>
+    <select id="selectAll" resultMap="detailComment1">
+        select comment.id cid,comment.content ccontent,comment.time ctime,
+               post.id pid,title,
+               `user`.id uid,email,nick_name
+        from post,`user`,comment
+        where comment.user_id = `user`.id and comment.post_id = post.id
+        order by comment.id desc
+    </select>
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailComment2" type="Comment">
+        <result property="id" column="cid"/>
+        <result property="content" column="ccontent"/>
+        <result property="time" column="ctime"/>
+        <association property="post" javaType="Post">
+            <result property="id" column="pid"/>
+            <result property="title" column="title"/>
+        </association>
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="email" column="email"/>
+            <result property="nickName" column="nick_name"/>
+        </association>
+    </resultMap>
+    <select id="selectByPostId" parameterType="int" resultMap="detailComment2">
+        select comment.id cid,comment.content ccontent,comment.time ctime,
+               post.id pid,title,
+               `user`.id uid,email,nick_name
+        from post,`user`,comment
+        where comment.user_id = `user`.id and comment.post_id = post.id and post.id = #{id}
+        order by comment.id desc
+    </select>
+
+
+    <resultMap id="detailComment3" type="Comment">
+        <result property="id" column="cid"/>
+        <result property="content" column="ccontent"/>
+        <result property="time" column="ctime"/>
+        <association property="post" javaType="Post">
+            <result property="id" column="pid"/>
+            <result property="title" column="title"/>
+        </association>
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="email" column="email"/>
+            <result property="nickName" column="nick_name"/>
+        </association>
+    </resultMap>
+    <select id="selectById" parameterType="int" resultMap="detailComment3">
+        select comment.id cid,comment.content ccontent,comment.time ctime,
+               post.id pid,title,
+               `user`.id uid,email,nick_name
+        from post,`user`,comment
+        where comment.user_id = `user`.id and comment.post_id = post.id and comment.id = #{id}
+    </select>
+
+</mapper>

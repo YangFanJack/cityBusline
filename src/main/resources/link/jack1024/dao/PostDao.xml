@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="link.jack1024.dao.PostDao">
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailPost1" type="Post">
+        <result property="id" column="pid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="pcontent"/>
+        <result property="time" column="ptime"/>
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="email" column="email"/>
+            <result property="nickName" column="nick_name"/>
+        </association>
+    </resultMap>
+    <select id="selectById" parameterType="int" resultMap="detailPost1">
+        select post.id pid,title,post.content pcontent,post.time ptime,
+               `user`.id uid,email,nick_name
+               from post,`user`
+        where post.user_id = `user`.id and post.id = #{id};
+    </select>
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailPost2" type="Post">
+        <result property="id" column="pid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="pcontent"/>
+        <result property="time" column="ptime"/>
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="email" column="email"/>
+            <result property="nickName" column="nick_name"/>
+        </association>
+    </resultMap>
+    <select id="selectAll" parameterType="int" resultMap="detailPost2">
+        select post.id pid,title,post.content pcontent,post.time ptime,
+               `user`.id uid,email,nick_name
+        from post,`user`
+        where post.user_id = `user`.id
+        order by post.id desc
+    </select>
+
+</mapper>

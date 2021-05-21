@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="link.jack1024.dao.StationDao">
+
+    <!--    多评论分页查询-->
+    <resultMap id="detailStation" type="Station">
+        <result property="id" column="sid"/>
+        <result property="x" column="x"/>
+        <result property="y" column="y"/>
+        <result property="stationName" column="station_name"/>
+        <collection property="busLines" ofType="BusLine">
+            <result property="id" column="bid"/>
+            <result property="lineNum" column="line_num"/>
+            <result property="linePrice" column="line_price"/>
+            <result property="beginTime" column="begin_time"/>
+            <result property="endTime" column="end_time"/>
+        </collection>
+    </resultMap>
+    <select id="selectAll" resultMap="detailStation">
+        select station.id sid,x,y,station_name,
+               bus_line.id bid,line_num,line_price,begin_time,end_time
+        from bus_line,line_station,station
+        where bus_line.id=line_station.line_id and station.id=line_station.station_id
+    </select>
+
+
+
+</mapper>
