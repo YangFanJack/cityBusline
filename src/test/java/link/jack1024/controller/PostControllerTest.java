@@ -1,5 +1,6 @@
 package link.jack1024.controller;
 
+import link.jack1024.pojo.BusMap;
 import org.junit.Test;
 
 import java.net.Inet4Address;
@@ -36,5 +37,19 @@ public class PostControllerTest {
         for (Integer i : cop){
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void testKa(){
+        int[][] map = {
+            { 0, 8, 1, 2, -1 },
+            { 8, 0, -1, 10000, -1 },
+            { 1, -1, 0, 2, 3 },
+            { 2, 10000, 2, 0, -1 },
+            { -1, -1, 3, -1, 0 }
+        };
+        BusMap busMap = new BusMap();
+        busMap.setMapArray(map);
+        busMap.recommend(0);
     }
 }

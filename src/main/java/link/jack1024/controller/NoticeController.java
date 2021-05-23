@@ -113,4 +113,19 @@ public class NoticeController {
         model.addAttribute("msg",msg);
         return "backPages/noticeManage";
     }
+
+    @RequestMapping("initPage")
+    public String initPage(String msg, Model model){
+        ArrayList<Notice> noticeListBefore = noticeService.findALl();
+        List<Notice> notices = null;
+        if(noticeListBefore.size()>4){
+            notices = noticeListBefore.subList(0, 4);
+            model.addAttribute("noticeList",notices);
+        }
+        else{
+            model.addAttribute("noticeList",noticeListBefore);
+        }
+        model.addAttribute("msg",msg);
+        return "frontPages/main";
+    }
 }

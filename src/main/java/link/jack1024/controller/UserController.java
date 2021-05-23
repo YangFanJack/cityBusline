@@ -35,7 +35,7 @@ public class UserController {
             session.setAttribute("userEmail",u.getEmail());
             session.setAttribute("userNickName",u.getNickName());
             model.addAttribute("msg","登录成功！");
-            return "frontPages/main";
+            return "redirect:initPage";
         }
         else{
             model.addAttribute("msg","邮箱或密码错误，请重新输入！");

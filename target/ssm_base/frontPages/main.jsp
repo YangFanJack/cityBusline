@@ -118,26 +118,26 @@
         <div class="container page-wrapper">
             <div class="row">
                 <div class="input-group mb-3 col-lg-3">
-                    <input type="text" class="form-control" placeholder="搜索站点" aria-label="Recipient's username"
+                    <input id="searchStation" type="text" class="form-control" placeholder="搜索站点" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">搜索</button>
+                        <button class="btn btn-outline-secondary" type="button" id="searchStationButton">搜索</button>
                     </div>
                 </div>
                 <div class="input-group mb-3 col-lg-3">
-                    <input type="text" class="form-control" placeholder="搜索线路" aria-label="Recipient's username"
+                    <input id="searchLine" type="number" class="form-control" placeholder="搜索线路" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">搜索</button>
+                        <button class="btn btn-outline-secondary" type="button" id="searchLineButton">搜索</button>
                     </div>
                 </div>
                 <div class="input-group mb-3 col-lg-6">
-                    <input type="text" class="form-control" placeholder="出发站点" aria-label="Recipient's username"
+                    <input id="sourceStation" type="text" class="form-control" placeholder="出发站点" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
-                    <input type="text" class="form-control" placeholder="目标站点" aria-label="Recipient's username"
+                    <input id="targetStation" type="text" class="form-control" placeholder="目标站点" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon3">搜索</button>
+                        <button class="btn btn-outline-secondary" type="button" id="searchShortestButton">搜索</button>
                     </div>
                 </div>
             </div>
@@ -157,38 +157,11 @@
                                     当前浏览器版本不支持，请升级浏览器
                                 </canvas>
                             </div>
-
-
-                            <div class="card">
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#" class="blog-desc">How To Be The First to Post A Comment on a
-                                        Blog-Post?
-                                    </a>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#">Johnson smith</a> in <a href="#">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div id="colorList">
                             </div>
-                            <div class="card">
-                                <div class="card-body p-0 blog-details">
-                                    <a href="#" class="blog-desc">How To Be The First to Post A Comment on a
-                                        Blog-Post?
-                                    </a>
-                                    <div class="author align-items-center mt-3 mb-1">
-                                        <a href="#">Johnson smith</a> in <a href="#">Design</a>
-                                    </div>
-                                    <ul class="blog-meta">
-                                        <li class="meta-item blog-lesson">
-                                            <span class="meta-value"> April 13, 2020 </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <span id="stationDetail1"></span>
+                            <ul id="stationDetail2" class="list-group">
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -196,83 +169,19 @@
                 <div class="col-lg-4 trending mt-lg-0 mt-5 mb-lg-5">
                     <div class="pos-sticky">
                         <h3 class="section-title-left">最近通知 </h3>
-
-                        <div class="grids5-info">
-                            <h4>01.</h4>
-                            <div class="blog-info">
-                                <a href="#" class="blog-desc1"> You can always change your domain name in the
-                                    future if you like.
-                                </a>
-                                <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#">Johnson smith</a> in <a href="#">Design</a>
+                        <c:forEach items="${noticeList}" var="keyword" varStatus="id">
+                            <div class="grids5-info">
+                                <h4>${id.index+1}.</h4>
+                                <div class="blog-info">
+                                    <a href="${pageContext.request.contextPath}/findNoticeById?id=${keyword.id}" class="blog-desc1"> ${keyword.title} </a>
+                                    <ul class="blog-meta">
+                                        <li class="meta-item blog-lesson">
+                                            <span class="meta-value"> ${keyword.time} </span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="blog-meta">
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> April 13, 2020 </span>
-                                    </li>
-                                    <li class="meta-item blog-students">
-                                        <span class="meta-value"> 6min read</span>
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
-                        <div class="grids5-info">
-                            <h4>02.</h4>
-                            <div class="blog-info">
-                                <a href="#" class="blog-desc1"> Pick a domain name & hosting for your blog
-                                </a>
-                                <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#">Johnson smith</a> in <a href="#">Design</a>
-                                </div>
-                                <ul class="blog-meta">
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> April 13, 2020 </span>
-                                    </li>
-                                    <li class="meta-item blog-students">
-                                        <span class="meta-value"> 6min read</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="grids5-info">
-                            <h4>03.</h4>
-                            <div class="blog-info">
-                                <a href="#" class="blog-desc1"> How To Start A Blog From Scratch and with No
-                                    Experience
-
-                                </a>
-                                <div class="author align-items-center mt-2 mb-1">
-                                    <a href="#">Johnson smith</a> in <a href="#">Design</a>
-                                </div>
-                                <ul class="blog-meta">
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> April 13, 2020 </span>
-                                    </li>
-                                    <li class="meta-item blog-students">
-                                        <span class="meta-value"> 6min read</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="grids5-info">
-                            <h4>04.</h4>
-                            <div class="blog-info">
-                                <a href="#" class="blog-desc1"> Within few minutes, you will have your blog
-                                    up and running.
-                                </a>
-                                <div class="author align-items-center mt-3 mb-1">
-                                    <a href="#">Johnson smith</a> in <a href="#">Design</a>
-                                </div>
-                                <ul class="blog-meta">
-                                    <li class="meta-item blog-lesson">
-                                        <span class="meta-value"> April 13, 2020 </span>
-                                    </li>
-                                    <li class="meta-item blog-students">
-                                        <span class="meta-value"> 6min read</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -375,6 +284,471 @@
     <script src="${pageContext.request.contextPath}/dist/js/toast.min.js"></script>
 
     <!-- disable body scroll which navbar is in active -->
+
+    <script>
+        function drawMap(){
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle="#FFFFFF";
+            ctx.beginPath();
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            var num = 500 / 25;
+            var col = 0;
+            var row = 0;
+
+            //绘制网格
+            ctx.lineWidth = "0.2"
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(col * 25, 0);
+                ctx.lineTo(col * 25, 475);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, col * 25, 15);
+                }
+                col++;
+            }
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, row * 25);
+                ctx.lineTo(475, row * 25);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, 5, row * 25);
+                }
+                row++;
+            }
+            //开始绘制
+            $.ajax({
+                data:{},
+                type: "POST",
+                url : "${pageContext.request.contextPath}/findMap",
+                success : function (msg){
+                    //颜色数组
+                    var colorArray = ["blue","green","orange","yellow","cyan","purple","pink","brown"];
+                    $("#colorList").children().remove();
+                    for(let i=0;i<msg.busLines.length;i++){
+                        //绘制路径
+                        ctx.beginPath();
+                        ctx.moveTo((msg.busLines[i].points[0].x)*25, (msg.busLines[i].points[0].y)*25);
+                        for(let j=1;j<msg.busLines[i].points.length;j++){
+                            ctx.lineTo((msg.busLines[i].points[j].x)*25, (msg.busLines[i].points[j].y)*25);
+                        }
+                        ctx.lineWidth = "3"
+                        ctx.strokeStyle = colorArray[i];
+                        $("#colorList").append('<button type="button" style="background-color:'+colorArray[i]+'" class="btn">'+msg.busLines[i].lineNum+'号线</button>');
+                        ctx.stroke();
+
+                        //绘制车站
+                        for(let j=0;j<msg.busLines[i].stations.length;j++){
+                            ctx.beginPath();
+                            ctx.arc((msg.busLines[i].stations[j].x)*25, (msg.busLines[i].stations[j].y)*25, 6, 0, 2 * Math.PI);
+                            ctx.fillStyle = "red";
+                            ctx.fill();
+                        }
+                    }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                }
+            });
+        }
+
+        $("#searchStationButton").click(function (){
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle="#FFFFFF";
+            ctx.beginPath();
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            var num = 500 / 25;
+            var col = 0;
+            var row = 0;
+
+            //绘制网格
+            ctx.lineWidth = "0.2"
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(col * 25, 0);
+                ctx.lineTo(col * 25, 475);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, col * 25, 15);
+                }
+                col++;
+            }
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, row * 25);
+                ctx.lineTo(475, row * 25);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, 5, row * 25);
+                }
+                row++;
+            }
+            //开始绘制
+            $.ajax({
+                data:{},
+                type: "POST",
+                url : "${pageContext.request.contextPath}/findMap",
+                success : function (msg){
+                    //颜色数组
+                    var colorArray = ["blue","green","orange","yellow","cyan","purple","pink","brown"];
+                    $("#colorList").children().remove();
+                    for(let i=0;i<msg.busLines.length;i++){
+                        //绘制路径
+                        ctx.beginPath();
+                        ctx.moveTo((msg.busLines[i].points[0].x)*25, (msg.busLines[i].points[0].y)*25);
+                        for(let j=1;j<msg.busLines[i].points.length;j++){
+                            ctx.lineTo((msg.busLines[i].points[j].x)*25, (msg.busLines[i].points[j].y)*25);
+                        }
+                        ctx.lineWidth = "3";
+                        ctx.strokeStyle = colorArray[i];
+                        $("#colorList").append('<button type="button" style="background-color:'+colorArray[i]+'" class="btn">'+msg.busLines[i].lineNum+'号线</button>');
+                        ctx.stroke();
+
+                        //绘制车站
+                        for(let j=0;j<msg.busLines[i].stations.length;j++){
+                            ctx.beginPath();
+                            ctx.arc((msg.busLines[i].stations[j].x)*25, (msg.busLines[i].stations[j].y)*25, 6, 0, 2 * Math.PI);
+                            ctx.fillStyle = "red";
+                            ctx.fill();
+                        }
+                    }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                }
+            }).then(()=>{
+                $.ajax({
+                    data:{"stationName":$("#searchStation").val()},
+                    type: "POST",
+                    url : "${pageContext.request.contextPath}/searchStation",
+                    success : function (msg){
+                        if(msg===''){
+                            $.toast({
+                                title: '错误',
+                                subtitle: 'error',
+                                content: '没有该车站',
+                                type: 'info',
+                                pause_on_hover: false,
+                                delay: 3000
+                            });
+                        }
+                        else{
+                            var canvas = document.getElementById("mycanvas");
+                            var ctx = canvas.getContext("2d");
+                            ctx.beginPath();
+                            ctx.arc((msg.x)*25, (msg.y)*25, 10, 0, 2 * Math.PI);
+                            ctx.fillStyle = "rgba(0,0,0,0.5)";
+                            ctx.fill();
+
+                            //信息显示
+                            $("#stationDetail1").children().remove();
+                            $("#stationDetail2").children().remove();
+                            $("#stationDetail1").append('<br><h3>路过 <span style="color: red">'+msg.stationName+' '+'</span>车站路线详细：</h3>');
+                            for(let i=0;i<msg.busLines.length;i++){
+                                let stationList = '';
+                                for(let j=0;j<msg.busLines[i].stations.length;j++){
+                                    stationList += '--->'+msg.busLines[i].stations[j].stationName+'('+msg.busLines[i].stations[j].x+','+msg.busLines[i].stations[j].y+')';
+                                }
+                                $("#stationDetail2").append('<li class="list-group-item">'+msg.busLines[i].lineNum+'号线:<br>'+stationList+'</li>');
+                            }
+
+
+
+                        }
+
+                    },
+                    error : function (XMLHttpRequest, textStatus, errorThrown){
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    }
+                })
+            })
+        })
+
+        $("#searchLineButton").click(function (){
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle="#FFFFFF";
+            ctx.beginPath();
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            var num = 500 / 25;
+            var col = 0;
+            var row = 0;
+
+            //绘制网格
+            ctx.lineWidth = "0.2"
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(col * 25, 0);
+                ctx.lineTo(col * 25, 475);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, col * 25, 15);
+                }
+                col++;
+            }
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, row * 25);
+                ctx.lineTo(475, row * 25);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, 5, row * 25);
+                }
+                row++;
+            }
+            //开始绘制
+            $.ajax({
+                data:{},
+                type: "POST",
+                url : "${pageContext.request.contextPath}/findMap",
+                success : function (msg){
+                    //颜色数组
+                    var colorArray = ["blue","green","orange","yellow","cyan","purple","pink","brown"];
+                    $("#colorList").children().remove();
+                    for(let i=0;i<msg.busLines.length;i++){
+                        //绘制路径
+                        ctx.beginPath();
+                        ctx.moveTo((msg.busLines[i].points[0].x)*25, (msg.busLines[i].points[0].y)*25);
+                        for(let j=1;j<msg.busLines[i].points.length;j++){
+                            ctx.lineTo((msg.busLines[i].points[j].x)*25, (msg.busLines[i].points[j].y)*25);
+                        }
+                        ctx.lineWidth = "3";
+                        ctx.strokeStyle = colorArray[i];
+                        $("#colorList").append('<button type="button" style="background-color:'+colorArray[i]+'" class="btn">'+msg.busLines[i].lineNum+'号线</button>');
+                        ctx.stroke();
+
+                        //绘制车站
+                        for(let j=0;j<msg.busLines[i].stations.length;j++){
+                            ctx.beginPath();
+                            ctx.arc((msg.busLines[i].stations[j].x)*25, (msg.busLines[i].stations[j].y)*25, 6, 0, 2 * Math.PI);
+                            ctx.fillStyle = "red";
+                            ctx.fill();
+                        }
+                    }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                }
+            }).then(()=>{
+                $.ajax({
+                    data:{"lineNum":$("#searchLine").val()},
+                    type: "POST",
+                    url : "${pageContext.request.contextPath}/searchLine",
+                    success : function (msg){
+                        if(msg===''){
+                            $.toast({
+                                title: '错误',
+                                subtitle: 'error',
+                                content: '没有该线路',
+                                type: 'info',
+                                pause_on_hover: false,
+                                delay: 3000
+                            });
+                        }
+                        else{
+                            //绘制路径
+                            ctx.beginPath();
+                            ctx.moveTo((msg.points[0].x)*25, (msg.points[0].y)*25);
+                            for(let j=1;j<msg.points.length;j++){
+                                ctx.lineTo((msg.points[j].x)*25, (msg.points[j].y)*25);
+                            }
+                            ctx.lineWidth = "10";
+                            ctx.strokeStyle = "rgba(0,0,0,0.3)";
+                            ctx.stroke();
+
+                            //信息显示
+                            $("#stationDetail1").children().remove();
+                            $("#stationDetail2").children().remove();
+                            $("#stationDetail1").append('<br><h3><span style="color: red">'+msg.lineNum+' '+'号线</span> 经过车站详细：</h3>');
+                            let stationList = '';
+                            for(let j=0;j<msg.stations.length;j++){
+                                stationList += '--->'+msg.stations[j].stationName+'('+msg.stations[j].x+','+msg.stations[j].y+')';
+                            }
+                            $("#stationDetail2").append('<li class="list-group-item">'+msg.lineNum+'号线:<br>'+stationList+'</li>');
+
+
+
+                        }
+
+                    },
+                    error : function (XMLHttpRequest, textStatus, errorThrown){
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    }
+                })
+            })
+        })
+
+        $("#searchShortestButton").click(function (){
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle="#FFFFFF";
+            ctx.beginPath();
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            var num = 500 / 25;
+            var col = 0;
+            var row = 0;
+
+            //绘制网格
+            ctx.lineWidth = "0.2"
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(col * 25, 0);
+                ctx.lineTo(col * 25, 475);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, col * 25, 15);
+                }
+                col++;
+            }
+            for (var i = 0; i < num; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, row * 25);
+                ctx.lineTo(475, row * 25);
+                ctx.strokeStyle = "black";
+                ctx.stroke();
+                if (i % 5 == 0) {
+                    ctx.font = "15px Arial";
+                    ctx.fillText(i, 5, row * 25);
+                }
+                row++;
+            }
+            //开始绘制
+            $.ajax({
+                data:{},
+                type: "POST",
+                url : "${pageContext.request.contextPath}/findMap",
+                success : function (msg){
+                    //颜色数组
+                    var colorArray = ["blue","green","orange","yellow","cyan","purple","pink","brown"];
+                    $("#colorList").children().remove();
+                    for(let i=0;i<msg.busLines.length;i++){
+                        //绘制路径
+                        ctx.beginPath();
+                        ctx.moveTo((msg.busLines[i].points[0].x)*25, (msg.busLines[i].points[0].y)*25);
+                        for(let j=1;j<msg.busLines[i].points.length;j++){
+                            ctx.lineTo((msg.busLines[i].points[j].x)*25, (msg.busLines[i].points[j].y)*25);
+                        }
+                        ctx.lineWidth = "3";
+                        ctx.strokeStyle = colorArray[i];
+                        $("#colorList").append('<button type="button" style="background-color:'+colorArray[i]+'" class="btn">'+msg.busLines[i].lineNum+'号线</button>');
+                        ctx.stroke();
+
+                        //绘制车站
+                        for(let j=0;j<msg.busLines[i].stations.length;j++){
+                            ctx.beginPath();
+                            ctx.arc((msg.busLines[i].stations[j].x)*25, (msg.busLines[i].stations[j].y)*25, 6, 0, 2 * Math.PI);
+                            ctx.fillStyle = "red";
+                            ctx.fill();
+                        }
+                    }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown){
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                }
+            }).then(()=>{
+                $.ajax({
+                    data:{"sourceStation":$("#sourceStation").val(),"targetStation":$("#targetStation").val()},
+                    type: "POST",
+                    url : "${pageContext.request.contextPath}/searchShortest",
+                    success : function (msg){
+                        if(msg===''){
+                            $.toast({
+                                title: '错误',
+                                subtitle: 'error',
+                                content: '没有输入的站点',
+                                type: 'info',
+                                pause_on_hover: false,
+                                delay: 3000
+                            });
+                        }
+                        else{
+                            //绘制路径
+                            for(let i=0;i<msg.length;i++){
+                                ctx.beginPath();
+                                ctx.moveTo((msg[i].searchPathStation[0][0].x)*25, (msg[i].searchPathStation[0][0].y)*25);
+                                for(let j=1;j<msg[i].searchPathStation.length;j++){
+                                    ctx.lineTo((msg[i].searchPathStation[j][0].x)*25, (msg[i].searchPathStation[j][0].y)*25);
+                                }
+                                ctx.lineWidth = "10";
+                                ctx.strokeStyle = "rgba(0,0,0,0.3)";
+                                ctx.stroke();
+                            }
+
+
+                            //信息显示
+                            $("#stationDetail1").children().remove();
+                            $("#stationDetail2").children().remove();
+                            var detail1 = '';
+                            for(let x=0;x<msg.length;x++){
+                                detail1+='<br>（路径'+(x+1)+'总长度：'+msg[x].searchShortest+'）';
+                            }
+                            $("#stationDetail1").append('<br><h3>从 <span style="color: red">'+$("#sourceStation").val()+'</span> '+'到 <span style="color: red">'+$("#targetStation").val()+'</span> 的推荐路径：'+detail1+'</h3>');
+
+                            for(let x=0;x<msg.length;x++){
+                                $("#stationDetail2").append('<li class="list-group-item active" aria-current="true">推荐路径'+(x+1)+'</li>');
+                                for(let j=0;j<msg[x].searchPathStation.length;j++){
+                                    let stationList = '';
+                                    let xy = '';
+                                    for(let i=0;i<msg[x].searchPathStation[j].length;i++){
+                                        xy = '('+msg[x].searchPathStation[j][i].x+','+msg[x].searchPathStation[j][i].y+'):&nbsp;&nbsp;';
+                                        if(msg[x].searchPathStation[j][i].pointType===1){
+                                            stationList += msg[x].searchPathStation[j][i].busLineNum+'号线(拐点)&nbsp;&nbsp;&nbsp;&nbsp;';
+                                        }
+                                        if(msg[x].searchPathStation[j][i].pointType===2){
+                                            stationList += msg[x].searchPathStation[j][i].busLineNum+'号线(车站：'+msg[x].searchPathStation[j][i].stationName+')&nbsp;&nbsp;&nbsp;&nbsp;';
+                                        }
+                                        if(msg[x].searchPathStation[j][i].pointType===3){
+                                            stationList += msg[x].searchPathStation[j][i].busLineNum+'号线(交点)&nbsp;&nbsp;&nbsp;&nbsp;';
+                                        }
+                                    }
+                                    stationList = xy+stationList;
+                                    $("#stationDetail2").append('<li class="list-group-item">'+stationList+'</li>');
+                                }
+                            }
+
+                        }
+
+                    },
+                    error : function (XMLHttpRequest, textStatus, errorThrown){
+                        alert(XMLHttpRequest.status);
+                        alert(XMLHttpRequest.readyState);
+                        alert(textStatus);
+                    }
+                })
+            })
+        })
+
+    </script>
+
     <script>
         $(function () {
             $('.navbar-toggler').click(function () {
@@ -401,6 +775,8 @@
                 $("#beforeLogin").css("display", "none");
                 $("#afterLogin").css("display", "");
             }
+
+            drawMap();
         });
     </script>
     <!-- disable body scroll which navbar is in active -->
@@ -416,52 +792,7 @@
         });
     </script>
 
-    <script>
-        var canvas = document.getElementById("mycanvas");
-        var ctx = canvas.getContext("2d");
-        var num = 500 / 25;
-        var col = 0;
-        var row = 0;
 
-        //绘制网格
-        ctx.lineWidth = "0.2"
-        for (var i = 0; i < num; i++) {
-            ctx.beginPath();
-            ctx.moveTo(col * 25, 0);
-            ctx.lineTo(col * 25, 475);
-            ctx.strokeStyle = "black";
-            ctx.stroke();
-            if (i % 5 == 0) {
-                ctx.font = "15px Arial";
-                ctx.fillText(i, col * 25, 15);
-            }
-            col++;
-        }
-        for (var i = 0; i < num; i++) {
-            ctx.beginPath();
-            ctx.moveTo(0, row * 25);
-            ctx.lineTo(475, row * 25);
-            ctx.strokeStyle = "black";
-            ctx.stroke();
-            if (i % 5 == 0) {
-                ctx.font = "15px Arial";
-                ctx.fillText(i, 5, row * 25);
-            }
-            row++;
-        }
-        ctx.beginPath();
-        ctx.moveTo(50, 50);
-        ctx.lineTo(50, 100);
-        ctx.lineTo(100, 100);
-        ctx.lineWidth = "3"
-        ctx.strokeStyle = "red";
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(50, 50, 6, 0, 2 * Math.PI);
-        ctx.fillStyle = "green";
-        ctx.fill();
-    </script>
 
 </body>
 

@@ -52,6 +52,6 @@
   </session-config>
 
   <welcome-file-list>
-    <welcome-file>frontPages/main.jsp</welcome-file>
+    <welcome-file>initPage</welcome-file>
   </welcome-file-list>
 </web-app>

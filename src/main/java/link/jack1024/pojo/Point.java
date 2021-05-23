@@ -10,6 +10,8 @@ public class Point {
     private int pointType;
     //点(组合段，车站，交叉点)的编号（在加入到map集合中使用）
     private int pointNum;
+    //所属线路编号
+    private int busLineNum;
 
     public Point() {
     }
@@ -60,6 +62,14 @@ public class Point {
         this.pointNum = pointNum;
     }
 
+    public int getBusLineNum() {
+        return busLineNum;
+    }
+
+    public void setBusLineNum(int busLineNum) {
+        this.busLineNum = busLineNum;
+    }
+
     @Override
     public int hashCode() {
         int x = getX()*1000 + 100000;
@@ -94,6 +104,7 @@ public class Point {
                 ", y=" + y +
                 ", pointType=" + pointType +
                 ", pointNum=" + pointNum +
+                ", busLineNum=" + busLineNum +
                 '}';
     }
 }

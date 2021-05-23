@@ -152,6 +152,7 @@ public class BusLine {
                         if(jy == j1y && ix == i1x){//纵横相交
                             if(ix<=Math.max(j1x,jx) && ix>=Math.min(j1x,jx) && jy<=Math.max(i1y,iy) && jy>=Math.min(i1y,iy)){
                                 Point point = new Point(ix, jy, 3);
+                                point.setBusLineNum(lineNum);
                                 //添加一个判断（不能重复添加）
                                 boolean isExists = false;
                                 for(Point p : allPoints){
@@ -167,6 +168,7 @@ public class BusLine {
                         else if(jx == j1x && iy == i1y){//横纵相交
                             if(jx<=Math.max(i1x,ix) && jx>=Math.min(i1x,ix) && iy<=Math.max(j1y,jy) && iy>=Math.min(j1y,jy)){
                                 Point point = new Point(jx, iy, 3);
+                                point.setBusLineNum(lineNum);
                                 //添加一个判断（不能重复添加）
                                 boolean isExists = false;
                                 for(Point p : allPoints){
@@ -217,6 +219,16 @@ public class BusLine {
                 Station s = (Station) p;
                 stations.add(s);
             }
+        }
+    }
+
+    //给Points和Stations写入线路编号
+    public void setBusLineNum(){
+        for(Point p : points){
+            p.setBusLineNum(lineNum);
+        }
+        for(Station s : stations){
+            s.setBusLineNum(lineNum);
         }
     }
 }

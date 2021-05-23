@@ -50,7 +50,8 @@ public class Station extends Point{
                 ", y=" + super.getY() +
                 ", pointType=" + super.getPointType() +
                 ", pointNum=" + super.getPointNum() +
-                ", stationName='" + stationName + '\'' +
+                ", busLineNum=" + super.getBusLineNum() +
+                ", stationName='" + stationName +
                 ", busLines=" + busLines +
                 '}';
     }

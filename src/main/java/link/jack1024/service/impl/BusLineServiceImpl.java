@@ -135,4 +135,10 @@ public class BusLineServiceImpl implements BusLineService {
         }
         return true;
     }
+
+    @Override
+    public BusLine findByLineNum(int lineNum) {
+        BusLine busLine = busLineDao.selectByNum(lineNum);
+        return busLine;
+    }
 }

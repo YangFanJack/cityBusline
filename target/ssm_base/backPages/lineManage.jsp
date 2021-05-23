@@ -589,6 +589,9 @@
     function drawMap(mapId){
       var canvas = document.getElementById(mapId);
       var ctx = canvas.getContext("2d");
+      ctx.fillStyle="#FFFFFF";
+      ctx.beginPath();
+      ctx.fillRect(0,0,canvas.width,canvas.height);
       var num = 500 / 25;
       var col = 0;
       var row = 0;
@@ -627,7 +630,8 @@
         success : function (msg){
           //颜色数组
           var colorArray = ["blue","green","orange","yellow","cyan","purple","pink","brown"];
-          $("#colorList").children().remove();
+          $("#colorList1").children().remove();
+          $("#colorList2").children().remove();
           for(let i=0;i<msg.busLines.length;i++){
             //绘制路径
             ctx.beginPath();

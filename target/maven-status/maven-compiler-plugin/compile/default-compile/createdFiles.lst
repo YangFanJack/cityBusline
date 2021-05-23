@@ -1,4 +1,5 @@
 link/jack1024/dao/PointDao.class
+link/jack1024/utils/Dijkstra.class
 link/jack1024/controller/UserController.class
 link/jack1024/service/impl/ManagerServiceImpl.class
 link/jack1024/service/impl/MessageServiceImpl.class
@@ -37,6 +38,7 @@ link/jack1024/dao/ManagerDao.class
 link/jack1024/pojo/Manager.class
 link/jack1024/service/impl/NoticeServiceImpl.class
 link/jack1024/service/MessageService.class
+link/jack1024/pojo/ShortestPlan.class
 link/jack1024/controller/CommentController.class
 link/jack1024/service/impl/StationServiceImpl.class
 link/jack1024/dao/StationDao.class

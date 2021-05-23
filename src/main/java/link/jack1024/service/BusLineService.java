@@ -14,4 +14,6 @@ public interface BusLineService {
     boolean update(int lineId, String beginTime, String endTime, int linePrice);
 
     boolean delete(int id);
+
+    BusLine findByLineNum(int lineNum);
 }

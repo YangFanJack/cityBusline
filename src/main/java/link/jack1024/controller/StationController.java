@@ -2,6 +2,7 @@ package link.jack1024.controller;
 
 import link.jack1024.pojo.BusLine;
 import link.jack1024.pojo.Station;
+import link.jack1024.service.BusLineService;
 import link.jack1024.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 public class StationController {
     @Autowired
     private StationService stationService;
+    @Autowired
+    private BusLineService busLineService;
 
     @RequestMapping(value="findSelectStation",method= RequestMethod.POST)
     @ResponseBody
@@ -98,5 +101,27 @@ public class StationController {
         else{
             return "fail";
         }
+    }
+
+    @RequestMapping("/searchStation")
+    @ResponseBody
+    public Station searchStation(@RequestParam("stationName") String stationName){
+        ArrayList<Station> stationList = stationService.findAll();
+        for(Station s : stationList){
+            if(s.getStationName().equals(stationName)){
+                ArrayList<BusLine> busLines = new ArrayList<>();
+                for(BusLine b : s.getBusLines()){
+                    BusLine byId = busLineService.findById(b.getId());
+//                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+//                    for (Station ss : stations){
+//                        System.out.println(ss);
+//                    }
+                    busLines.add(byId);
+                }
+                s.setBusLines(busLines);
+                return s;
+            }
+        }
+        return null;
     }
 }
