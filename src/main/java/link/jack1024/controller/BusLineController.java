@@ -184,16 +184,22 @@ public class BusLineController {
         LinkedHashSet<Point> allPointSet = busMap.getAllPointSet();
         int sourceNum = -1;
         int targetNum = -1;
+        boolean b = false;
         for(Point p : allPointSet){
             if(p.getPointType()==2){
                 Station p1 = (Station) p;
                 if(p1.getStationName().equals(sourceStation)){
+                    b = true;
                     sourceNum = p1.getPointNum();
                 }
                 if(p1.getStationName().equals(targetStation)){
+                    b = true;
                     targetNum = p1.getPointNum();
                 }
             }
+        }
+        if(!b){
+            return null;
         }
 
         busMap.recommend(sourceNum);
