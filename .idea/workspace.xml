@@ -7,7 +7,18 @@
     <list default="true" id="77c6eee9-0186-4701-8b70-e003b31e41d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/link/jack1024/controller/BusLineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/link/jack1024/controller/BusLineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/link/jack1024/pojo/BusLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/link/jack1024/pojo/BusLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/link/jack1024/pojo/BusMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/link/jack1024/pojo/BusMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/frontPages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/frontPages/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/link/jack1024/controller/BusLineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/link/jack1024/controller/BusLineController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/link/jack1024/pojo/BusLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/link/jack1024/pojo/BusLine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/link/jack1024/pojo/BusMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/link/jack1024/pojo/BusMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ssm_base.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm_base.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/controller/BusLineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/controller/BusLineController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/pojo/BusLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/pojo/BusLine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/pojo/BusMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm_base/WEB-INF/classes/link/jack1024/pojo/BusMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm_base/frontPages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm_base/frontPages/main.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +79,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15658021" />
     <property name="project.structure.side.proportion" value="0.20897156" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -261,6 +272,14 @@
       <workItem from="1621732436814" duration="18133000" />
       <workItem from="1621762691085" duration="1315000" />
       <workItem from="1621860209541" duration="978000" />
+      <workItem from="1621957294658" duration="2650000" />
+      <workItem from="1621994752076" duration="6362000" />
+      <workItem from="1622009816635" duration="1294000" />
+      <workItem from="1622419087286" duration="597000" />
+      <workItem from="1622530172903" duration="1174000" />
+      <workItem from="1622554546356" duration="702000" />
+      <workItem from="1622556863153" duration="650000" />
+      <workItem from="1622865066233" duration="855000" />
     </task>
     <servers />
   </component>

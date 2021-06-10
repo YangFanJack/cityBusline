@@ -90,6 +90,7 @@ public class BusLine {
             int stationX = s.getX();
             int stationY = s.getY();
             for(int i=0;i<pointStations.size()-1;i++){
+                //如果车站和组合点同xy坐标，保留车站，删除组合点
                 if(s.equals(pointStations.get(i))){
                     pointStations.remove(pointStations.get(i));
                     pointStations.add(i,s);

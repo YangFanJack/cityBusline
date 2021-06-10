@@ -159,10 +159,15 @@ public class BusLineController {
         }
         BusMap busMap = new BusMap();
         busMap.setBusLines(busLineList);
+        //构建不重复的set集合
         busMap.setAllPointSet();
+        //点的编号作为key，同坐标的点的集合作为value，构建hashmap
         busMap.setCountPointHash();
+        //构建map邻接矩阵
         busMap.setMap();
 
+        //由于数组是引用类型的，所以要线copy一份数组，之后第二次使用Dijkstra算法的时候需要使用原来的数组
+        //因为在Dijkstra算法中会更新数组内的某些值
         int[][] mapArrayEx = busMap.getMapArray();
         int[][] mapArray = new int[mapArrayEx.length][mapArrayEx.length];
         for(int i=0;i<mapArrayEx.length;i++){
@@ -181,6 +186,7 @@ public class BusLineController {
         }
 
 
+        //判断输入的起始/目的车站名是否存在
         LinkedHashSet<Point> allPointSet = busMap.getAllPointSet();
         int sourceNum = -1;
         int targetNum = -1;
@@ -202,6 +208,7 @@ public class BusLineController {
             return null;
         }
 
+        //进行第一次Dijkstra算法
         busMap.recommend(sourceNum);
         int[][] path = ShortestPlan.path;
         int[] shortest = ShortestPlan.shortest;
@@ -244,6 +251,9 @@ public class BusLineController {
             System.out.println();
         }
 
+        //判断是否需要进行第二次Dijkstra算法来推荐第二短的路径
+        //如果需要进行第二次Dijkstra算法来计算第二短的路径，需要把上一次最短路径（除了起始和目的点）中所有点都从途中排除
+        //这里通过复制10000来近似代替将点从邻接矩阵中排除
         boolean isChange = false;
         for(int i=1;i<path[targetNum].length-1;i++){
             int k = path[targetNum][i];
@@ -269,6 +279,7 @@ public class BusLineController {
             System.out.println();
         }
 
+        //进行第二次Dijkstra算法，这里的mapArray就是之前copy的那一份邻接矩阵
         busMap.setMapArray(mapArray);
         busMap.recommend(sourceNum);
         int[][] path2 = ShortestPlan.path;

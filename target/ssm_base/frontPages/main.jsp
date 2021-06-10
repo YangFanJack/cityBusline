@@ -582,6 +582,8 @@
                             //信息显示
                             $("#stationDetail1").children().remove();
                             $("#stationDetail2").children().remove();
+                            $("#stationDetail1").append('<br><h3><span style="color: red">'+msg.lineNum+' '+'号线</span> 首/末班车时间：'+msg.beginTime+' / '+msg.endTime+'</h3>');
+                            $("#stationDetail1").append('<br><h3><span style="color: red">'+msg.lineNum+' '+'号线</span> 票价：'+msg.linePrice+'元</h3>');
                             $("#stationDetail1").append('<br><h3><span style="color: red">'+msg.lineNum+' '+'号线</span> 经过车站详细：</h3>');
                             let stationList = '';
                             for(let j=0;j<msg.stations.length;j++){
@@ -692,6 +694,11 @@
                         }
                         else{
                             //绘制路径
+                            ctx.beginPath();
+                            ctx.arc((msg[0].searchPathStation[0][0].x)*25, (msg[0].searchPathStation[0][0].y)*25, 10, 0, 2 * Math.PI);
+                            ctx.arc((msg[0].searchPathStation[msg[0].searchPathStation.length-1][0].x)*25, (msg[0].searchPathStation[msg[0].searchPathStation.length-1][0].y)*25, 10, 0, 2 * Math.PI);
+                            ctx.fillStyle = "rgba(0,0,0,0.5)";
+                            ctx.fill();
                             for(let i=0;i<msg.length;i++){
                                 ctx.beginPath();
                                 ctx.moveTo((msg[i].searchPathStation[0][0].x)*25, (msg[i].searchPathStation[0][0].y)*25);

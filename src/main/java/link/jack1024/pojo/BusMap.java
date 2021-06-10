@@ -39,11 +39,11 @@ public class BusMap {
 
     //完成map邻接矩阵
     public void setMap() {
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        System.out.println(allPointSet.size());
-        for(Point p : allPointSet){
-            System.out.println(p);
-        }
+//        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+//        System.out.println(allPointSet.size());
+//        for(Point p : allPointSet){
+//            System.out.println(p);
+//        }
         mapArray = new int[allPointSet.size()][allPointSet.size()];
         //初始化邻接矩阵
         for(int i=0;i<mapArray.length;i++){
@@ -60,7 +60,8 @@ public class BusMap {
             ArrayList<Point> allPoints = this.getBusLines().get(i).getAllPoints();
             ArrayList<Integer> distance = this.getBusLines().get(i).getDistance();
             for(int j=0;j<allPoints.size()-1;j++){
-                System.out.println(allPoints.get(j).getPointNum()+"   :   "+allPoints.get(j+1).getPointNum());
+//                System.out.println(allPoints.get(j).getPointNum()+"   :   "+allPoints.get(j+1).getPointNum());
+                //无向图的邻接矩阵是对称的
                 mapArray[allPoints.get(j).getPointNum()][allPoints.get(j+1).getPointNum()] = distance.get(j);
                 mapArray[allPoints.get(j+1).getPointNum()][allPoints.get(j).getPointNum()] = distance.get(j);
             }
@@ -163,6 +164,7 @@ public class BusMap {
 
         if(ShortestPlan.shortest == null){
             System.out.println("没有最短路径了");
+            return;
         }
 
         for(int i=0; i< ShortestPlan.shortest.length; i++){
@@ -196,17 +198,18 @@ public class BusMap {
             {
                 if( !visited[i] && mapArray[orig][i] != M) //如果该顶点未被遍历过且与orig相连
                 {
-                    if(min == -1 || min > mapArray[orig][i]) //找到与orig最近的点
+                    if(min == -1 || min > mapArray[orig][i]) //找到与orig最近的点并更新最短距离
                     {
                         min = mapArray[orig][i];
                         k = i;
                     }
                 }
             }
-            //正确的图生成的矩阵不可能出现K== M的情况
+            //正确的图生成的矩阵不可能出现K== M的情况，除非没有和orig线相邻的情况框
             if(k == M)
             {
-                System.out.println("the input map matrix is wrong!");
+                System.out.println("the input adjacent matrix is wrong!");
+                return;
             }
             shortest[k] = min;
 //            System.out.println("~~~~~~~~~~~~~~~");
@@ -215,14 +218,14 @@ public class BusMap {
             //以k为中心点，更新oirg到未访问点的距离
             for (int i = 0; i < n; i++)
             {
-                if (!visited[i] && mapArray[k][i] != M)
+                if (!visited[i] && mapArray[k][i] != M)//如果该顶点未被遍历过且与k相连
                 {
 //                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     int callen = min + mapArray[k][i];
 //                    System.out.println(mapArray[orig][i]);
 //                    System.out.println(mapArray[orig][i] > callen);
 //                    System.out.println(callen);
-                    if (mapArray[orig][i] == M || mapArray[orig][i] > callen)
+                    if (mapArray[orig][i] == M || mapArray[orig][i] > callen)//更新oirg到未访问点的距离
                     {
 //                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         mapArray[orig][i] = callen;
